@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef7201ed8ed0b34fb14246103d5e6d0, type: 3}
+  m_Name: CardTheme
+  m_EditorClassIdentifier: 
+  back: {fileID: 21300000, guid: 1b3e2ce8910364691a2083d316ce006a, type: 3}
+  flipDuration: 0.18
+  moveDuration: 0.25
