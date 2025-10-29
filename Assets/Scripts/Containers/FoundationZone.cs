@@ -5,22 +5,8 @@ using CardGame.Views;
 
 public class FoundationZone : BaseCardContainer
 {
-    [SerializeField] private bool _bindToFirstAceSuit = true;
-    [SerializeField] private Suit _presetSuit;
-
     private Suit _currentSuit;
     private bool _hasSuit;
-
-    private void Awake()
-    {
-        if (_bindToFirstAceSuit)
-            _hasSuit = false;
-        else
-        {
-            _currentSuit = _presetSuit;
-            _hasSuit = true;
-        }
-    }
 
     protected override void ConfigureCollider(CardView c) => c.SetColliderEnabled(false);
     protected override int GetSortingOrderFor(CardView c) => 200 + c.StackIndex;
@@ -35,7 +21,7 @@ public class FoundationZone : BaseCardContainer
         if (_cards.Count == 0)
             return card.Data.rank == Rank.Ace;
 
-        if (_hasSuit && card.Data.suit != _currentSuit)
+        if (card.Data.suit != _currentSuit)
             return false;
 
         var top = _cards[_cards.Count - 1];
@@ -46,7 +32,7 @@ public class FoundationZone : BaseCardContainer
     {
         var card = pile[0];
 
-        if (_cards.Count == 0 && !_hasSuit && _bindToFirstAceSuit && card.Data.rank == Rank.Ace)
+        if (!_hasSuit && card.Data.rank == Rank.Ace)
         {
             _currentSuit = card.Data.suit;
             _hasSuit = true;
@@ -59,13 +45,7 @@ public class FoundationZone : BaseCardContainer
 
     public void ResetSuitBinding()
     {
-        if (_bindToFirstAceSuit)
-            _hasSuit = false;
-        else
-        {
-            _currentSuit = _presetSuit;
-            _hasSuit = true;
-        }
+        _hasSuit = false;
         Reflow();
     }
 }
